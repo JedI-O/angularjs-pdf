@@ -215,6 +215,9 @@
           }
         });
 
+        scope.$on('$destroy', function () {
+            windowEl.off('scroll');
+        });
       }
     };
   } ]);
