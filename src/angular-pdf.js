@@ -22,8 +22,8 @@
 
     var setCanvasDimensions = function(canvas, w, h) {
       var ratio = backingScale(canvas);
-      canvas.width = Math.floor(w * ratio);
-      canvas.height = Math.floor(h * ratio);
+      canvas.width = Math.floor(w); //removed the ratio because it was problematic for browser zooming
+      canvas.height = Math.floor(h);
       canvas.style.width = Math.floor(w) + 'px';
       canvas.style.height = Math.floor(h) + 'px';
       canvas.getContext('2d').setTransform(ratio, 0, 0, ratio, 0, 0);
