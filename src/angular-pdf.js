@@ -22,10 +22,10 @@
 
     var setCanvasDimensions = function(canvas, w, h) {
       var ratio = backingScale(canvas);
-      canvas.width = Math.floor(angular.element(window).width()); //removed the ratio because it was problematic for the pdf size
-      canvas.height = Math.floor(angular.element(window).height());
-      canvas.style.width = canvas.width + 'px';
-      canvas.style.height =  canvas.height + 'px';
+      canvas.width = Math.floor(w * ratio);
+      canvas.height = Math.floor(h * ratio);
+      canvas.style.width = Math.floor(w) + 'px';
+      canvas.style.height = Math.floor(h) + 'px';
       canvas.getContext('2d').setTransform(ratio, 0, 0, ratio, 0, 0);
       return canvas;
     };
