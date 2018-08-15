@@ -134,17 +134,31 @@
           scope.renderPage(scope.pageToDisplay);
         };
 
-        scope.rotate = function() {
-          if (canvas.getAttribute('class') === 'rotate0') {
-            canvas.setAttribute('class', 'rotate90');
-          } else if (canvas.getAttribute('class') === 'rotate90') {
-            canvas.setAttribute('class', 'rotate180');
-          } else if (canvas.getAttribute('class') === 'rotate180') {
-            canvas.setAttribute('class', 'rotate270');
-          } else {
-            canvas.setAttribute('class', 'rotate0');
+         scope.rotate = function(docAlign) {
+          if(!docAlign){
+            if (canvas.getAttribute('class') === 'rotate0') {
+              canvas.setAttribute('class', 'rotate90');
+            } else if (canvas.getAttribute('class') === 'rotate90') {
+              canvas.setAttribute('class', 'rotate180');
+            } else if (canvas.getAttribute('class') === 'rotate180') {
+              canvas.setAttribute('class', 'rotate270');
+            } else {
+              canvas.setAttribute('class', 'rotate0');
+            }
+          }else {
+            if (canvas.getAttribute('class') === 'rotate0') {
+              canvas.setAttribute('class', 'rotateDoc90'); // Special class to fix the pdf position while rotating
+            } else if (canvas.getAttribute('class') === 'rotateDoc90') {
+              canvas.setAttribute('class', 'rotate180');
+            } else if (canvas.getAttribute('class') === 'rotate180') {
+              canvas.setAttribute('class', 'rotateDoc270');
+            } else {
+              canvas.setAttribute('class', 'rotate0');
+            }
           }
+
         };
+
 
         function clearCanvas() {
           if (ctx) {
